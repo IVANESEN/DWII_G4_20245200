@@ -1,4 +1,11 @@
+import { useContext } from "react"
+import { BudgetStateContext } from "./context/BudgetContext"
+import { BudgetForm } from "./components/BudgetForm"
+
 function App() {
+  const state = useContext(BudgetStateContext)
+  const isValidBudget = state.budget > 0
+
   return (
     <>
       <header className="bg-blue-600 py-8 max-h-72">
@@ -6,8 +13,9 @@ function App() {
           Planificador de gastos
         </h1>
       </header>
+
       <div className="max-w-3xl mx-auto bg-white shadow-lg rounded-lg mt-10 p-10">
-        <p>Formulario aqui</p>
+        {isValidBudget ? <h1>Detalle de gastos</h1> : <BudgetForm />}
       </div>
     </>
   )

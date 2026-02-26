@@ -4,6 +4,14 @@ import { budgetReducer, initialState } from "../reducers/budget-reducer"
 export const BudgetStateContext = createContext()
 export const BudgetDispatchContext = createContext()
 
+const handleSubmit=(e) => {
+    e.preventDefault()
+    dispatch({
+        type: 'add-budget',
+        payload:{budget}
+    })
+}
+
 export const BudgetProvider = ({ children }) => {
     const [state, dispatch] = useReducer(budgetReducer, initialState)
 
