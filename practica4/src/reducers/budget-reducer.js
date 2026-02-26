@@ -1,7 +1,8 @@
 export const initialState = {
     budget: 0,
     modal: false,
-    expenses: []
+    expenses: [],
+    editingId: ""
 }
 
 export const budgetReducer = (state, action) => {
@@ -25,6 +26,12 @@ export const budgetReducer = (state, action) => {
                     { ...action.payload.expense, id: new Date().getTime() }
                 ],
                 modal: false
+            }
+        case "get-expense-by-id":
+            return {
+                ...state,
+                editingId: action.payload.id,
+                modal: true
             }
         default:
             return state;
