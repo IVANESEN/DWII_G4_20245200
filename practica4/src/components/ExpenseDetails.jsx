@@ -1,3 +1,11 @@
+import {
+LeadingActions,
+SwipeableList,
+SwipeableListItem,
+SwipeAction,
+TrailingActions,
+} from 'react-swipeable-list';
+import 'react-swipeable-list/dist/styles.css';
 import { categories } from "../data/categories"
 
 export const ExpenseDetails = ({ expense }) => {
