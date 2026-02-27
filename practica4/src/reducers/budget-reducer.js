@@ -61,6 +61,14 @@ export const budgetReducer = (state, action) => {
                 ...state,
                 currentCategory: action.payload.categoryId
             }
+
+        case "reset-app":
+            return {
+                ...state,
+                budget: 0,
+                expenses: [],
+                activeId: ""
+            }
         default:
             return state;
             

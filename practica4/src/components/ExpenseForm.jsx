@@ -49,6 +49,14 @@ export const ExpenseForm = () => {
             setError('Todos los Campos son Obligatorios')
             return
         }
+        const totalExpenses = state.expenses.reduce((total, expense) => expense.amount + total, 0)
+        const remainingBudget = state.budget - totalExpenses
+        const previousAmount = state.editingId ? state.expenses.find(e => e.id === state.editingId).amount : 0
+         
+        if((expense.amount - previousAmount) > remainingBudget) {
+            setError('Ese gasto se sale del presupuesto')
+            return
+        }
 
         if (state.editingId) {
             dispatch({ type: 'update-expense', payload: { expense: { id: state.editingId, ...expense } } })
